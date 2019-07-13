@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: auto-refresh
+  cloud:
+    config:
+      uri: http://localhost:8888
+      label: config
+      fail-fast: true
