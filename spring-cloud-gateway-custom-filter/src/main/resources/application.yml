@@ -1,0 +1,27 @@
+spring:
+  mvc:
+    favicon:
+      enabled: false
+  jackson:
+    deserialization:
+      FAIL_ON_UNKNOWN_PROPERTIES: false
+
+  cloud:
+    gateway:
+      routes:
+        - id: later_test
+          uri: https://httpbin.org
+          predicates:
+            - Path=/anything/later
+          filters:
+            - Custom=A,B
+            - OrderedCustom=C,D
+        - id: first_test
+          uri: https://httpbin.org
+          predicates:
+            - Path=/anything/first
+          filters:
+            - OrderedCustom=C,D
+            - Custom=A,B
+
+logging.level.com.cloud.gateway.filter: DEBUG
