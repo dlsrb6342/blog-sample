@@ -1,0 +1,5 @@
+rootProject.name = 'root'
+
+include 'service1'
+include 'service2'
+include 'service3'
