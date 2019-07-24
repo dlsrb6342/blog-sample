@@ -1,5 +1,6 @@
-rootProject.name = 'root'
+rootProject.name = 'sleuth'
 
-include 'service1'
-include 'service2'
-include 'service3'
+include 'mcaller'
+include 'mclient'
+include 'fcaller'
+include 'fclient'

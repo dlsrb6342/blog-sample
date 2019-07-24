@@ -3,7 +3,8 @@ plugins {
 }
 
 allprojects {
-    group = 'com.sleuth.example'
+
+    group = 'com.example.sleuth'
     version = '0.0.1-SNAPSHOT'
 
     repositories {
@@ -16,7 +17,6 @@ ext {
 }
 
 subprojects {
-
     apply plugin: 'java'
     apply plugin: 'idea'
     apply plugin: 'io.spring.dependency-management'
@@ -25,10 +25,8 @@ subprojects {
     sourceCompatibility = '11'
 
     dependencies {
-        implementation 'org.springframework.boot:spring-boot-starter-webflux'
         implementation 'org.springframework.cloud:spring-cloud-starter-zipkin'
         testImplementation 'org.springframework.boot:spring-boot-starter-test'
-        testImplementation 'io.projectreactor:reactor-test'
 
         compileOnly 'org.projectlombok:lombok:1.18.8'
         annotationProcessor 'org.projectlombok:lombok:1.18.8'
@@ -40,4 +38,3 @@ subprojects {
         }
     }
 }
-
