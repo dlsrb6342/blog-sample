@@ -1,0 +1,15 @@
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+}
+
+bootJar {
+    baseName = 'service-2'
+    version =  '0.1.0'
+}
+
+jib {
+    to {
+        image = "${bootJar.baseName}"
+        tags = ['latest']
+    }
+}

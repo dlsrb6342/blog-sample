@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  serivce-1:
+    image: service-1:latest
+    container_name: service-1
+    ports:
+      - "8081:8081"
+
+  serivce-2:
+    image: service-2:latest
+    container_name: service-2
+    ports:
+      - "8082:8082"

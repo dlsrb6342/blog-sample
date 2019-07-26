@@ -1,0 +1,16 @@
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    testImplementation 'io.projectreactor:reactor-test'
+}
+
+bootJar {
+    baseName = 'service-1'
+    version =  '0.1.0'
+}
+
+jib {
+    to {
+        image = "${bootJar.baseName}:${bootJar.version}"
+        tags = ['latest']
+    }
+}

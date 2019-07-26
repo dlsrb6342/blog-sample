@@ -1,0 +1,44 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.6.RELEASE'
+    id 'com.google.cloud.tools.jib' version '1.4.0'
+}
+
+allprojects {
+    apply plugin: 'java'
+
+    group = 'com.gradle.docker.example'
+    version = '0.0.1-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+    }
+}
+
+subprojects {
+    apply plugin: 'idea'
+
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'com.google.cloud.tools.jib'
+
+    sourceCompatibility = '11'
+
+    dependencies {
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+        compileOnly 'org.projectlombok:lombok:1.18.8'
+        annotationProcessor 'org.projectlombok:lombok:1.18.8'
+    }
+
+}
+
+task dockerDownAll(type:Exec) {
+    commandLine 'docker-compose', 'down'
+}
+
+task dockerRunAll(type:Exec) {
+    dependsOn dockerDownAll
+    dependsOn subprojects.jibDockerBuild
+    commandLine 'docker-compose', 'up', '-d'
+}
+
