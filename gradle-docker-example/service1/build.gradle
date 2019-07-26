@@ -10,7 +10,7 @@ bootJar {
 
 jib {
     to {
-        image = "${bootJar.baseName}:${bootJar.version}"
+        image = "${dockerId}/${bootJar.baseName}:${bootJar.version}"
         tags = ['latest']
     }
 }
